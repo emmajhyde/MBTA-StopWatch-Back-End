@@ -10,25 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_27_221735) do
+ActiveRecord::Schema.define(version: 2020_01_28_025415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "examples", force: :cascade do |t|
-    t.text "text", null: false
-    t.bigint "user_id", null: false
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "station_id"
+    t.string "desc", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_examples_on_user_id"
+    t.index ["station_id"], name: "index_favorites_on_station_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "stations", force: :cascade do |t|
     t.string "name"
-    t.string "desc", null: false
     t.string "url_path"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,12 +36,10 @@ ActiveRecord::Schema.define(version: 2020_01_27_221735) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "station_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["station_id"], name: "index_users_on_station_id"
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
-  add_foreign_key "examples", "users"
-  add_foreign_key "users", "stations"
+  add_foreign_key "favorites", "stations"
+  add_foreign_key "favorites", "users"
 end
