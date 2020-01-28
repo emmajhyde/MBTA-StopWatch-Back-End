@@ -2,5 +2,6 @@
 
 class User < ApplicationRecord
   include Authentication
-  has_many :stations
+  has_many :favorites
+  has_many :stations, through: :favorites
 end
