@@ -1,4 +1,4 @@
 class StationSerializer < ActiveModel::Serializer
-  attributes :id, :name, :desc, :url_path
-  belongs_to :user
+  attributes :id, :name, :url_path
+  has_many :users, through: :favorites
 end
