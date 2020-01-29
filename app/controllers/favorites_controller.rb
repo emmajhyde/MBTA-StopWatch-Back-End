@@ -15,9 +15,9 @@ class FavoritesController < ApplicationController
 
   # POST /stations
   def create
-    @favorites = Favorite.new(station_params)
+    @favorites = Favorite.new(favorite_params)
 
-    if @favorite.save
+    if @favorites.save
       render json: @favorite, status: :created, location: @favorite
     else
       render json: @favorite.errors, status: :unprocessable_entity
@@ -26,7 +26,7 @@ class FavoritesController < ApplicationController
 
   # PATCH/PUT /stations/1
   def update
-    if @favorite.update(station_params)
+    if @favorite.update(favorite_params)
       render json: @station
     else
       render json: @favorite.errors, status: :unprocessable_entity
@@ -39,13 +39,14 @@ class FavoritesController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
-    def set_favorite
-      @favorite = Favorite.find(params[:id])
-    end
+  def set_favorite
+    @favorite = Favorite.find(params[:id])
+  end
 
     # Only allow a trusted parameter "white list" through.
-    def favorite_params
-      params.require(:favorite).permit(:name, :desc, :url_path)
-    end
+  def favorite_params
+    params.require(:favorite).permit(:description, :user_id, :station_id)
+  end
 end

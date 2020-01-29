@@ -1,15 +1,7 @@
 # frozen_string_literal: true
 
-class UsersController < ApplicationController
+class UsersController < ProtectedController
   skip_before_action :authenticate, only: %i[signup signin]
-
-  # TEMP FOR TESTING PURPOSES
-  def index
-    @users = User.all
-
-    render json: @users
-  end
-
 
   # POST '/sign-up'
   def signup
