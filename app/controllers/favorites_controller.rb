@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :set_station, only: [:show, :update, :destroy]
+  before_action :set_favorite, only: [:show, :update, :destroy]
 
   # GET /stations
   def index
@@ -10,7 +10,7 @@ class FavoritesController < ApplicationController
 
   # GET /favorites/1
   def show
-    render json: @favorites
+    render json: @favorite
   end
 
   # POST /stations
