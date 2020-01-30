@@ -27,7 +27,7 @@ class FavoritesController < ApplicationController
   # PATCH/PUT /stations/1
   def update
     if @favorite.update(favorite_params)
-      render json: @station
+      render json: @favorite
     else
       render json: @favorite.errors, status: :unprocessable_entity
     end
