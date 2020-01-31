@@ -1,9 +1,9 @@
-class FavoritesController < ApplicationController
+class FavoritesController < ProtectedController
   before_action :set_favorite, only: [:show, :update, :destroy]
 
   # GET /stations
   def index
-    @favorites = Favorite.all
+    @favorites = current_user.favorites.all
 
     render json: @favorites
   end
