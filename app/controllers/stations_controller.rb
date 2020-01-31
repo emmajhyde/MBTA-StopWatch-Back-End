@@ -1,4 +1,4 @@
-class StationsController < ProtectedController
+class StationsController < ApplicationController
   before_action :set_station, only: [:show, :update, :destroy]
 
   # GET /stations
