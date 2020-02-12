@@ -4,4 +4,3 @@ class RenameMbtaStopIdJustMbtaid < ActiveRecord::Migration[5.2]
     add_column :stations, :mbta_id, :string
   end
 end
-e
