@@ -39,4 +39,4 @@ This app involed several complex technologies, including using join tables. To p
 
 #### Entity Relationship Diagram
 
-![MBTA StopWatch ERD](https://imgur.com/6TRKxwY)
+![MBTA StopWatch ERD](https://imgur.com/gallery/6TRKxwY)
