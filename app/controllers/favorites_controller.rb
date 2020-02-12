@@ -39,10 +39,10 @@ class FavoritesController < ProtectedController
   end
 
   # GET /predictions?id
-   def predictions
-     @favorite = Favorite.find(params[:id])
-     MBTAService.get_predictions(@favorite.id)
-   end
+  def predictions
+    @favorite = Favorite.find(params[:id])
+    MBTAService.get_predictions(@favorite.id)
+  end
 
   private
 

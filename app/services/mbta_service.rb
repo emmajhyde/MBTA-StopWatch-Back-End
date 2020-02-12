@@ -40,4 +40,4 @@ class MBTAService
   def self.resolve_predictions_url(mbta_stop_id)
     "#{MBTA_API_V3}/#{MBTA_PREDICTIONS}filter[stop]=#{mbta_stop_id}&#{MBTA_SORT_AND_LIMIT}"
   end
-  end
+end
