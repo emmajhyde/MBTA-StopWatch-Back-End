@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :examples, except: %i[new edit]
   resources :favorites, except: %i[new edit]
   resources :users, except: %i[new edit]
+  get 'predictions', to: 'predictions#index'
 
   # Custom routes
   post '/sign-up' => 'users#signup'

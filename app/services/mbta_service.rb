@@ -6,8 +6,7 @@ class MBTAService
   MBTA_PREDICTIONS = "predictions?"
   MBTA_SORT_AND_LIMIT = "sort=departure_time&page[limit]=2"
 
-  def self.get_predictions(favorite_id)
-    favorite = Favorite.find(favorite_id)
+  def self.get_predictions(favorite)
     station = Station.find(favorite.station_id)
     response = HTTP.get(resolve_predictions_url(station.mbta_id))
     json = JSON.parse(response.body)

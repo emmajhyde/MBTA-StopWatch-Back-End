@@ -40,8 +40,12 @@ class FavoritesController < ProtectedController
 
   # GET /predictions?id
   def predictions
-    @favorite = Favorite.find(params[:id])
-    MBTAService.get_predictions(@favorite.id)
+    if params[:id]
+      @favorite = Favorite.find(params[:id])
+      MBTAService.get_predictions(@favorite)
+    else
+      { error: 'did not find an id passed in.' }
+    end
   end
 
   private
