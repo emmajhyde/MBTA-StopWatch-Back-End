@@ -1,3 +1,3 @@
 class StationSerializer < ActiveModel::Serializer
-  attributes :id, :name, :url_path
+  attributes :id, :name, :mbta_id
 end

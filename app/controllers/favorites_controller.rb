@@ -38,6 +38,12 @@ class FavoritesController < ProtectedController
     @favorite.destroy
   end
 
+  # GET /predictions?id
+   def predictions
+     @favorite = Favorite.find(params[:id])
+     MBTAService.get_predictions(@favorite.id)
+   end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.
