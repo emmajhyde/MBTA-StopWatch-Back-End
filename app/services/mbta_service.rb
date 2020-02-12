@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'http'
 
 class MBTAService
-
-  MBTA_API_V3 = "https://api-v3.mbta.com"
-  MBTA_PREDICTIONS = "predictions?"
-  MBTA_SORT_AND_LIMIT = "sort=departure_time&page[limit]=2"
+  MBTA_API_V3 = 'https://api-v3.mbta.com'
+  MBTA_PREDICTIONS = 'predictions?'
+  MBTA_SORT_AND_LIMIT = 'sort=departure_time&page[limit]=2'
 
   def self.get_predictions(favorite)
     station = Station.find(favorite.station_id)
@@ -16,22 +17,22 @@ class MBTAService
       # regardless of if it is arriving or departing.
 
       direction_and_time = if prediction['attributes']['arrival_time']
-        {
-          name: station.name,
-          direction: :arrival,
-          time: prediction['attributes']['arrival_time'],
-          description: favorite.description
-        }
-      else
-        {
-          name: station.name,
-          direction: :departure,
-          time: prediction['attributes']['departure_time'],
-          description: favorite.description
-        }
-      end
+                             {
+                               name: station.name,
+                               direction: :arrival,
+                               time: prediction['attributes']['arrival_time'],
+                               description: favorite.description
+                             }
+                           else
+                             {
+                               name: station.name,
+                               direction: :departure,
+                               time: prediction['attributes']['departure_time'],
+                               description: favorite.description
+                             }
+        end
     end
-  end
+    end
 
   private
 

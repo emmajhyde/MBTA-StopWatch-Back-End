@@ -38,16 +38,6 @@ class FavoritesController < ProtectedController
     @favorite.destroy
   end
 
-  # GET /predictions?id
-  def predictions
-    if params[:id]
-      @favorite = Favorite.find(params[:id])
-      MBTAService.get_predictions(@favorite)
-    else
-      { error: 'did not find an id passed in.' }
-    end
-  end
-
   private
 
     # Use callbacks to share common setup or constraints between actions.
